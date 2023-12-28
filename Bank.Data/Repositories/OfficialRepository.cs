@@ -19,11 +19,11 @@ namespace Bank.Data.Repositories
         }
         public List<Official> GetOfficials()
         {
-            return _context.OfficialList;
+            return _context.OfficialList.ToList();
         }
         public Official GetOfficialById(int id)
         {
-            return _context.OfficialList.Find(x => x.Id == id);
+            return _context.OfficialList.ToList().Find(x => x.Id == id);
         }
         public Official AddOfficial(Official official)
         {
@@ -32,7 +32,7 @@ namespace Bank.Data.Repositories
         }
         public Official UpdateOfficial(int id, Official official)
         {
-            var updatedOfficial = _context.OfficialList.Find(x => x.Id == id);
+            var updatedOfficial = _context.OfficialList.ToList().Find(x => x.Id == id);
             if (updatedOfficial == null)
                 return null;
             updatedOfficial = official;
@@ -40,7 +40,7 @@ namespace Bank.Data.Repositories
         }
         public void DeleteOfficial(int id)
         {
-            _context.OfficialList.Remove(_context.OfficialList.Find(x => x.Id == id));
+            _context.OfficialList.Remove(_context.OfficialList.ToList().Find(x => x.Id == id));
         }
     }
 }

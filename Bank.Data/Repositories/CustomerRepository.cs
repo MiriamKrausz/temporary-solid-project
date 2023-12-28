@@ -19,11 +19,11 @@ namespace Bank.Data.Repositories
         }
         public List<Customer> GetCustomers()
         {
-            return _context.CustomerList;
+            return _context.CustomerList.ToList();
         }
         public  Customer GetById(int id)
         {
-            return _context.CustomerList.Find(x => x.Id == id);
+            return _context.CustomerList.ToList().Find(x => x.Id == id);
         }
         public Customer AddCustomer(Customer customer)
         {
@@ -32,7 +32,7 @@ namespace Bank.Data.Repositories
         }
         public Customer UpdateCustomer(int id, Customer customer)
         {
-            var updatedCustomer = _context.CustomerList.Find(x => x.Id == id); 
+            var updatedCustomer = _context.CustomerList.ToList().Find(x => x.Id == id); 
             if (updatedCustomer == null)
                 return null;
             updatedCustomer = customer;
@@ -40,7 +40,7 @@ namespace Bank.Data.Repositories
         }
         public void DeleteCustomer(int id)
         {
-            _context.CustomerList.Remove(_context.CustomerList.Find(x => x.Id == id));
+            _context.CustomerList.Remove(_context.CustomerList.ToList().Find(x => x.Id == id));
         }
     }
 }

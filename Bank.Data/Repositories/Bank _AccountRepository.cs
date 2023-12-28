@@ -19,11 +19,11 @@ namespace Bank.Data.Repositories
         }
         public List<Bank_Account> GetAccounts()
         {
-            return _context.Bank_AccountList;
+            return _context.Bank_AccountList.ToList();
         }
         public Bank_Account GetByBankNumber(int BankNumber)
         {
-            return _context.Bank_AccountList.Find(x => x.BankNumber == BankNumber);
+            return _context.Bank_AccountList.ToList().Find(x => x.BankNumber == BankNumber);
         }
         public Bank_Account AddBank_Account(Bank_Account bank_account)
         {
@@ -32,7 +32,7 @@ namespace Bank.Data.Repositories
         }
         public Bank_Account UpdateBank_Account(int BankNumber, Bank_Account bank_account)
         {
-            var updatedBank_Account= _context.Bank_AccountList.Find(x => x.BankNumber == BankNumber);
+            var updatedBank_Account= _context.Bank_AccountList.ToList().Find(x => x.BankNumber == BankNumber);
             if (updatedBank_Account == null)
                 return null;
             updatedBank_Account=bank_account;
@@ -40,7 +40,7 @@ namespace Bank.Data.Repositories
         }
         public void DeleteBank_Account(int BankNumber)
         {
-            _context.Bank_AccountList.Remove(_context.Bank_AccountList.Find(x => x.BankNumber == BankNumber));
+            _context.Bank_AccountList.Remove(_context.Bank_AccountList.ToList().Find(x => x.BankNumber == BankNumber));
         }
     }
 }

@@ -26,10 +26,10 @@ namespace Bank.Controllers
         }
 
         // GET api/<Accounts>/5
-        [HttpGet("{AccountNumber}")]
-        public IActionResult Get(int AccountNumber)
+        [HttpGet("{BankNumber}")]
+        public IActionResult Get(int BankNumber)
         {
-            var Bank_Account=_bank_AccountService.GetByBankNumber (AccountNumber);
+            var Bank_Account=_bank_AccountService.GetByBankNumber (BankNumber);
             if(Bank_Account is null)
             {
                 return NotFound();  
